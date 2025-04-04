@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel='stylesheet' href="/static/todo.css">
+        <title>Update Task</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">To Do App</a>
+        </nav>
+
+        <h1>Update Todo</h1>
+        <form action="/update/{{ todo.sno }}" method="POST">
+            <input type="hidden" name="sno" value="{{ todo.sno }}">
+
+            <div class = 'mb-3'>
+                <label for="title">Title:</label><br>
+                <input type="text" name="title" value="{{ todo.title }}"><br>
+            </div>
+            <div class = 'mb-3'>
+                <label for="description">Description:</label><br>
+                <input type="text" name="description" value="{{ todo.description }}"><br>
+            </div>
+            <button type="submit">Update</button>
+        </form>
+
+    </body>
+</html>
+

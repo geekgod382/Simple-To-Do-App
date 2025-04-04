@@ -1,0 +1,50 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel ='stylesheet' href="/static/todo.css">
+        <title>To Do App</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">To Do App</a>
+        </nav>
+
+        <h1>Create a new task</h1>
+        <form action="/add" method="POST">
+            <label for="title">Title:</label><br>
+            <input type="text" name="title" placeholder="Enter a new todo" required><br>
+            <label for="description">Description:</label><br>
+            <input type="text" name="description" placeholder="Enter a description"><br>
+            <button type="submit">Add</button>
+        </form>
+
+        <h2>To Do List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>sno</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date Created</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for todo in allTodo %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.description }}</td>
+                    <td>{{ todo.date_created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>
+                        <button><a href = '/delete/{{todo.sno}}' type = 'button' class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                        <button><a href = '/update/{{todo.sno}}' type = 'button' class="btn btn-outline-dark btn-sm mx-1">Update</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
